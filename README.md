@@ -1,4 +1,4 @@
-# Project Title
+# Homework for Intro to Computer Graphics
 
 Simple overview of use/purpose.
 
