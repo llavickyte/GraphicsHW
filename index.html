@@ -57,6 +57,15 @@
   uniform float uTime; //time in sec
   out vec3 vColor;
 
+  mat3 getScaling (vec2 scale) {
+    return mat3(
+      scale.x, 0.0, 0.0,
+      0.0, scale.y, 0.0,
+      0.0, 0.0, 1.0
+    );
+  }
+  
+
   void main() {
     gl_Position = vec4(aPosition, 1.0);
     vColor = aColor;
@@ -66,6 +75,11 @@
     vec3 translation = vec3(0.0, 0.5, 0.0);
     
     vec3 new_pos = (aPosition * scale) + translation;
+
+    // Added for HW2 ()
+    float pulse = abs(sin(uTime * 1.5));
+    mat3 scaling = getScaling(vec2(pulse, pulse));
+    new_pos = scaling * new_pos; //try
 
     gl_Position = vec4(new_pos, 1.0);
     vColor = aColor;
