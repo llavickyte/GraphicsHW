@@ -6,6 +6,14 @@ Simple overview of use/purpose.
 
 An in-depth paragraph about your project and overview of use.
 
+HW1
+- modified triangle.js (shape and color)
+- added scaling and translation with vector trig 
+
+HW2
+- changed scaling and tranlation from HW1 into matrices instead
+- added new transformations
+
 ## Getting Started
 
 ### Dependencies
