@@ -113,12 +113,12 @@
     mat3 scaling = getScaling(vec2(scalePulse, scalePulse));
     mat3 rotation = getRotation(rotAngle);
 
-    mat3 finalTransform = translation * rotation * scaling;
+    mat3 finalTransform = translation * rotation * scaling * scale;
 
     // vec3 new_pos = (aPosition * scale) + translation;
     
     vec3 new_pos = finalTransform * vec3(aPosition.xy, 1.0);
-    gl_Position = vec4(new_pos.xy, 1.0);
+    gl_Position = vec4(new_pos.xy, 0.0, 1.0);
     vColor = aColor;
   }
   </script>
