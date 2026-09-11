@@ -54,7 +54,7 @@
   in vec3 aPosition;
   in vec3 aColor;
 
-  uniform float uTime; //time in sec
+  uniform highp float uTime; //time in sec (highp bc console error)
   out vec3 vColor;
 
   mat3 getScaling (vec2 scale) {
@@ -102,8 +102,8 @@
     gl_Position = vec4(aPosition, 1.0);
     vColor = aColor;
 
-    // Added for HW1 (translation and scaling), turned to matrices for HW2 
-    mat3 scale = getScaling(vec2(-0.5, -1.0));
+    // Added for HW1 (translation and scaling), turned to matrices for HW2 and modified scale value
+    mat3 scale = getScaling(vec2(-0.5, -0.5));
     mat3 translation = getTranslation(vec2(0.0, 0.5));
 
      // Added for HW2 
@@ -113,9 +113,9 @@
     mat3 scaling = getScaling(vec2(scalePulse, scalePulse));
     mat3 rotation = getRotation(rotAngle);
 
-    mat3 finalTransform = translation * rotation * scaling * scale;
+    mat3 finalTransform = translation *rotation * scaling * scale; 
 
-    // vec3 new_pos = (aPosition * scale) + translation;
+    // vec3 new_pos = (aPosition * scale) + translation; (hw1 changed to matrix multiplication for hw2)
     
     vec3 new_pos = finalTransform * vec3(aPosition.xy, 1.0);
     gl_Position = vec4(new_pos.xy, 0.0, 1.0);
@@ -129,7 +129,7 @@
   precision mediump float;
   in vec3 vColor;
 
-  uniform float uTime; //time in sec (added)
+  uniform highp float uTime; //time in sec (added) highp bc console error
   out vec4 fragColor;
 
   void main() {
@@ -144,19 +144,7 @@
   }
   </script>
 
-  <script>
-  // --- Triangle ---
-const positions = new Float32Array([
-   0.0,  1.5, 0.0,  // vertex 1
-  -1.0, 0.0, 0.0,  // vertex 2
-   1.0, 0.0, 0.0   // vertex 3
-]);
-
-const colors = new Float32Array([
-  1.0, 0.5, 0.0,  // Red -> orange
-  0.0, 0.0, 1.0,  // Green -> blue
-  0.0, 0.0, 1.0   // Blue
-]);</script>
+ <script src="triangle.js"></script>
 
   <script>
     function createShader(gl, type, source) {
