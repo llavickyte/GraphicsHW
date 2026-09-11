@@ -89,7 +89,7 @@
   }
   mat3 getMirror(float angle) {
     float c = cos(2.0 *angle);
-    float s = sin(angle);
+    float s = sin(2.0 angle);
     return mat3(
       c, s, 0.0,
       s, -c, 0.0,
@@ -113,7 +113,7 @@
     mat3 scaling = getScaling(vec2(scalePulse, scalePulse));
     mat3 rotation = getRotation(rotAngle);
 
-    mat3 finalTransform = translation * rotation * scaling;
+    mat3 finalTransform = translation * rotation * scaling * scale;
 
     // vec3 new_pos = (aPosition * scale) + translation;
     
